@@ -1,6 +1,6 @@
-# BimaWaluya Link Budget FTTH
+# BimaWaluya Link Budget
 
-**ukur cepat TTL Rasio jaringan fiber** - Kalkulator link budget untuk teknisi jaringan fiber optik dari OLT hingga ONT.
+**Ukur Cepat Total Rasio FTTH** - Kalkulator link budget untuk teknisi jaringan fiber optik dari OLT hingga ONT.
 
 ## 🌟 Features
 
@@ -12,6 +12,7 @@
 - ✅ **Real-time Calculation**: Perhitungan otomatis saat input berubah
 - ✅ **Status Indicator**: Visual status (🟢 PASS / 🟡 WARNING / 🔴 FAIL)
 - ✅ **Detailed Breakdown**: Tabel rincian redaman per komponen
+- ✅ **Total Rasio Calculation**: Hitung persentase total attenuation terhadap budget
 - ✅ **Segment Analysis**: Rekomendasi berdasarkan hasil
 
 **Field Validation:**
@@ -29,24 +30,24 @@
 
 ---
 
-## 🔍 **TTL Rasio (Total Attenuation Ratio)**
+## 🔍 **Total Rasio (Total Attenuation Ratio)**
 
-**TTL Rasio** = Total Attenuation dibanding Budget Available
+**Total Rasio** = Persentase Total Attenuation terhadap Budget Available
 
 Aplikasi ini hitung:
 ```
-TTL Rasio = (Total Attenuation / Budget Available) × 100%
+Total Rasio = (Total Attenuation / Budget Available) × 100%
 
 Contoh:
 - Budget Available: 33 dB
 - Total Attenuation: 28.8 dB
-- TTL Rasio: 87.3%
+- Total Rasio: 87.3%
 - Margin Tersisa: 12.7% (4.2 dB)
 
 Status:
-- TTL Rasio < 90% → ✅ AMAN (margin >= 3dB)
-- TTL Rasio 90-95% → ⚠️ HATI-HATI (margin 1-3dB)
-- TTL Rasio > 95% → ❌ TIDAK AMAN (margin < 1dB)
+- Total Rasio < 90% → ✅ AMAN (margin >= 3dB)
+- Total Rasio 90-95% → ⚠️ HATI-HATI (margin 1-3dB)
+- Total Rasio > 95% → ❌ TIDAK AMAN (margin < 1dB)
 ```
 
 ---
@@ -168,12 +169,12 @@ Total Attenuation (dB) = Σ (Fiber + Splice + Connector + Splitter Loss)
 
 Margin Remaining (dB) = Budget Available - Total Attenuation
 
-TTL Rasio (%) = (Total Attenuation / Budget Available) × 100
+Total Rasio (%) = (Total Attenuation / Budget Available) × 100
 
 Status:
-- PASS: Margin ≥ 3 dB (TTL Rasio < 90%)
-- WARNING: 1 dB ≤ Margin < 3 dB (90% ≤ TTL Rasio < 95%)
-- FAIL: Margin < 1 dB (TTL Rasio > 95%)
+- PASS: Margin ≥ 3 dB (Total Rasio < 90%)
+- WARNING: 1 dB ≤ Margin < 3 dB (90% ≤ Total Rasio < 95%)
+- FAIL: Margin < 1 dB (Total Rasio > 95%)
 ```
 
 ---
@@ -181,7 +182,7 @@ Status:
 ## 🔍 Field Validation Workflow
 
 ### **Step 1: Calculate**
-- Input parameter → Get calculated margin + TTL Rasio
+- Input parameter → Get calculated margin + Total Rasio
 
 ### **Step 2: Field Measurement**
 - Buka OPM
@@ -249,7 +250,8 @@ MIT
 
 ---
 
-**BimaWaluya Link Budget FTTH** - Alat Teknisi Lapangan untuk FTTH
+**BimaWaluya Link Budget** - Ukur Cepat Total Rasio FTTH
+
+Alat teknisi lapangan untuk jaringan fiber optik
 
 Feedback & Issues: GitHub Issues
-

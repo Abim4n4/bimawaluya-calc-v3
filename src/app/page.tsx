@@ -43,14 +43,16 @@ export default function Home() {
         <header className="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 sticky top-0 z-50">
           <div className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
             <div>
-              <div className="flex items-center gap-2">
-                <div className="text-2xl">🔗</div>
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-gradient-to-br from-orange-400 to-orange-600 rounded-lg flex items-center justify-center">
+                  <span className="text-2xl">●</span>
+                </div>
                 <div>
                   <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
-                    BimaWaluya Link Budget FTTH
+                    BimaWaluya Link Budget
                   </h1>
-                  <p className="text-xs text-gray-600 dark:text-gray-400">
-                    ukur cepat TTL Rasio jaringan fiber
+                  <p className="text-sm text-gray-600 dark:text-gray-400">
+                    Ukur Cepat Total Rasio FTTH
                   </p>
                 </div>
               </div>
@@ -143,7 +145,7 @@ export default function Home() {
         {/* Footer */}
         <footer className="border-t border-gray-200 dark:border-gray-700 mt-12 py-6 text-center text-sm text-gray-600 dark:text-gray-400">
           <p>
-            BimaWaluya Link Budget FTTH v1.0.0 • Nilai perhitungan bersifat teoritis •
+            BimaWaluya Link Budget v1.0.0 • Nilai perhitungan bersifat teoritis •
             Verifikasi dengan OPM measurement di lapangan untuk hasil akurat
           </p>
         </footer>
