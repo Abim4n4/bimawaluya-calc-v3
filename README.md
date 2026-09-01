@@ -254,4 +254,6 @@ MIT
 
 Alat teknisi lapangan untuk jaringan fiber optik
 
+© 2026 @rhd26 • BimaWaluya Link Budget FTTH
+
 Feedback & Issues: GitHub Issues

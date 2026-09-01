@@ -148,6 +148,9 @@ export default function Home() {
             BimaWaluya Link Budget v1.0.0 • Nilai perhitungan bersifat teoritis •
             Verifikasi dengan OPM measurement di lapangan untuk hasil akurat
           </p>
+          <p className="mt-2 text-xs">
+            © 2026 @rhd26 • BimaWaluya Link Budget FTTH
+          </p>
         </footer>
       </div>
     </div>
