@@ -3,6 +3,7 @@
 import { LinkBudgetResult, LinkBudgetInput } from '@/lib/types';
 import { formatNumber, formatDate, generateTextReport, copyToClipboard } from '@/lib/utils';
 import { calculator } from '@/lib/calculator';
+import { FieldValidation } from './FieldValidation';
 import { useState } from 'react';
 
 interface ResultDisplayProps {
@@ -193,6 +194,11 @@ export const ResultDisplay: React.FC<ResultDisplayProps> = ({ result, input }) =
             </div>
           ))}
         </div>
+      </div>
+
+      {/* Field Validation */}
+      <div className="bg-white dark:bg-gray-900 p-6 rounded-lg border border-gray-200 dark:border-gray-700">
+        <FieldValidation calculatedResult={result} input={input} />
       </div>
 
       {/* Metadata */}

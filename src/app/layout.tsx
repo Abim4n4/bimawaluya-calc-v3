@@ -2,10 +2,11 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Link Budget FTTH Calculator | Teknisi Lapangan',
+  title: 'BimaWaluya LinkBug | Linkbudget Ukur Cepat FTTH',
   description:
-    'Kalkulator link budget FTTH untuk teknisi lapangan. Hitung redaman serat, splice, konektor, dan splitter secara cepat dan akurat. Topologi OLT-OTB-ODC-ODP-ONT.',
+    'BimaWaluya LinkBug - Kalkulator link budget FTTH untuk teknisi lapangan. Hitung redaman serat, splice, konektor, dan splitter secara cepat. Topologi OLT-OTB-ODC-ODP-ONT.',
   keywords: [
+    'linkbug',
     'link budget',
     'FTTH',
     'PON',
@@ -15,12 +16,12 @@ export const metadata: Metadata = {
     'ONT',
     'ODC',
     'ODP',
-    'splitter',
+    'BimaWaluya',
   ],
-  authors: [{ name: 'Bimawaluya' }],
+  authors: [{ name: 'BimaWaluya' }],
   openGraph: {
-    title: 'Link Budget FTTH Calculator',
-    description: 'Alat ukur cepat untuk teknisi jaringan fiber optic',
+    title: 'BimaWaluya LinkBug',
+    description: 'Alat ukur cepat link budget untuk jaringan fiber optic FTTH',
     type: 'website',
   },
 };
