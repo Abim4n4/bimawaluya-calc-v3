@@ -2,12 +2,12 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'BimaWaluya LinkBug | Linkbudget Ukur Cepat FTTH',
+  title: 'BimaWaluya Link Budget FTTH | ukur cepat TTL Rasio jaringan fiber',
   description:
-    'BimaWaluya LinkBug - Kalkulator link budget FTTH untuk teknisi lapangan. Hitung redaman serat, splice, konektor, dan splitter secara cepat. Topologi OLT-OTB-ODC-ODP-ONT.',
+    'BimaWaluya Link Budget FTTH - Alat ukur cepat TTL Rasio jaringan fiber optik untuk teknisi lapangan. Hitung redaman serat, splice, konektor, dan splitter secara akurat. Topologi OLT-OTB-ODC-ODP-ONT.',
   keywords: [
-    'linkbug',
     'link budget',
+    'TTL rasio',
     'FTTH',
     'PON',
     'teknisi lapangan',
@@ -17,11 +17,13 @@ export const metadata: Metadata = {
     'ODC',
     'ODP',
     'BimaWaluya',
+    'attenuation',
+    'fiber optic',
   ],
   authors: [{ name: 'BimaWaluya' }],
   openGraph: {
-    title: 'BimaWaluya LinkBug',
-    description: 'Alat ukur cepat link budget untuk jaringan fiber optic FTTH',
+    title: 'BimaWaluya Link Budget FTTH',
+    description: 'Alat ukur cepat TTL Rasio untuk jaringan fiber optic FTTH',
     type: 'website',
   },
 };

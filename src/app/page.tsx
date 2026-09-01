@@ -47,10 +47,10 @@ export default function Home() {
                 <div className="text-2xl">🔗</div>
                 <div>
                   <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
-                    BimaWaluya LinkBug
+                    BimaWaluya Link Budget FTTH
                   </h1>
                   <p className="text-xs text-gray-600 dark:text-gray-400">
-                    Linkbudget ukur cepat Jaringan FTTH
+                    ukur cepat TTL Rasio jaringan fiber
                   </p>
                 </div>
               </div>
@@ -143,7 +143,7 @@ export default function Home() {
         {/* Footer */}
         <footer className="border-t border-gray-200 dark:border-gray-700 mt-12 py-6 text-center text-sm text-gray-600 dark:text-gray-400">
           <p>
-            BimaWaluya LinkBug v1.0.0 • Nilai perhitungan bersifat teoritis •
+            BimaWaluya Link Budget FTTH v1.0.0 • Nilai perhitungan bersifat teoritis •
             Verifikasi dengan OPM measurement di lapangan untuk hasil akurat
           </p>
         </footer>

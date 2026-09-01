@@ -1,6 +1,6 @@
-# BimaWaluya LinkBug
+# BimaWaluya Link Budget FTTH
 
-**Linkbudget ukur cepat Jaringan FTTH** - Kalkulator link budget untuk teknisi jaringan fiber optik dari OLT hingga ONT.
+**ukur cepat TTL Rasio jaringan fiber** - Kalkulator link budget untuk teknisi jaringan fiber optik dari OLT hingga ONT.
 
 ## 🌟 Features
 
@@ -14,7 +14,7 @@
 - ✅ **Detailed Breakdown**: Tabel rincian redaman per komponen
 - ✅ **Segment Analysis**: Rekomendasi berdasarkan hasil
 
-**Field Validation (NEW):**
+**Field Validation:**
 - ✅ **Compare vs OPM Measurement**: Bandingkan hasil calculated vs actual OPM reading
 - ✅ **Accuracy Assessment**: Hitung accuracy percentage
 - ✅ **Field Notes**: Catat kondisi lapangan yang mempengaruhi hasil
@@ -29,51 +29,47 @@
 
 ---
 
-## 🔍 **Yang BEDA dari Kalkulator Biasa:**
+## 🔍 **TTL Rasio (Total Attenuation Ratio)**
 
-### **Feature #1: Field Validation**
+**TTL Rasio** = Total Attenuation dibanding Budget Available
 
-Aplikasi ini tahu bahwa **hasil di lapangan PASTI BEDA** dengan calculation. Oleh karena itu, ada feature untuk:
+Aplikasi ini hitung:
+```
+TTL Rasio = (Total Attenuation / Budget Available) × 100%
 
-1. **Input actual margin dari OPM measurement**
-   - Buka OPM → ukur Tx di OLT → ukur Rx di ONT → hitung margin
-   - Input di aplikasi → automatic comparison
+Contoh:
+- Budget Available: 33 dB
+- Total Attenuation: 28.8 dB
+- TTL Rasio: 87.3%
+- Margin Tersisa: 12.7% (4.2 dB)
 
-2. **Lihat accuracy vs calculated**
-   ```
-   Calculated: 4.2 dB
-   Actual (OPM): 4.5 dB
-   Difference: +0.3 dB (7% accuracy)
-   Status: ✅ Akurasi Tinggi
-   ```
-
-3. **Understand perbedaan**
-   - Kalau actual lebih baik → excellent!
-   - Kalau actual lebih buruk → ada faktor lapangan:
-     * Connector/splice berkualitas rendah
-     * Serat banyak ditekuk (bending loss)
-     * Kelembaban tinggi
-     * Pengukuran tidak akurat
-
-4. **Track field notes**
-   - Catat "kabel rusak di tiang 5" atau "splitter basah"
-   - Link notes dengan measurement result
+Status:
+- TTL Rasio < 90% → ✅ AMAN (margin >= 3dB)
+- TTL Rasio 90-95% → ⚠️ HATI-HATI (margin 1-3dB)
+- TTL Rasio > 95% → ❌ TIDAK AMAN (margin < 1dB)
+```
 
 ---
 
-## 📊 **Mengapa Hasil Di Lapangan Beda?**
+## 📊 **Mengapa Field Validation Penting?**
 
-### **Theoretical vs Real-World Factors:**
+### **Real-world vs Theoretical:**
 
-| Factor | Impact | Mitigasi |
-|--------|--------|----------|
-| **Component Quality** | Loss bisa lebih tinggi | Gunakan component standard |
-| **Installation Quality** | Splice/connector bisa jelek | Training untuk teknisi |
-| **Environmental** | Suhu, humidity mempengaruhi | Measure di waktu konsisten |
-| **Fiber Bending** | Bending radius terlalu ketat | Check fiber routing |
-| **Component Aging** | Serat/connector degradasi | Replace old components |
-| **Measurement Tool** | OPM accuracy ±0.3dB | Calibrate OPM regularly |
-| **Connector Contamination** | Debu/moisture di connector | Clean before measure |
+Hasil calculated PASTI BEDA dengan measurement di lapangan karena:
+- Component quality variation
+- Installation quality
+- Environmental factors (temperature, humidity)
+- Fiber bending
+- Connector cleanliness
+- Tool calibration
+
+**Aplikasi ini punya feature untuk handle perbedaan tsb:**
+
+1. **Calculate** di aplikasi
+2. **Measure** dengan OPM di lapangan
+3. **Input actual margin** ke aplikasi
+4. **Lihat accuracy** & interpretation
+5. **Track field conditions** untuk analysis
 
 ---
 
@@ -126,7 +122,7 @@ src/
 │   ├── TopologySelector.tsx      # Topology UI
 │   ├── SegmentInputForm.tsx      # Input form
 │   ├── ResultDisplay.tsx         # Results
-│   └── FieldValidation.tsx       # NEW: Validation vs OPM
+│   └── FieldValidation.tsx       # Field validation
 │
 ├── hooks/
 │   └── useCalculation.ts         # State management
@@ -166,16 +162,18 @@ src/
 ## 🎯 Calculation Formula
 
 ```
-Budget Available = Tx Power - Rx Sensitivity
+Budget Available (dB) = Tx Power (dBm) - Rx Sensitivity (dBm)
 
-Total Attenuation = Σ (Fiber + Splice + Connector + Splitter Loss)
+Total Attenuation (dB) = Σ (Fiber + Splice + Connector + Splitter Loss)
 
-Margin Remaining = Budget Available - Total Attenuation
+Margin Remaining (dB) = Budget Available - Total Attenuation
+
+TTL Rasio (%) = (Total Attenuation / Budget Available) × 100
 
 Status:
-- PASS: Margin ≥ 3 dB
-- WARNING: 1 dB ≤ Margin < 3 dB
-- FAIL: Margin < 1 dB
+- PASS: Margin ≥ 3 dB (TTL Rasio < 90%)
+- WARNING: 1 dB ≤ Margin < 3 dB (90% ≤ TTL Rasio < 95%)
+- FAIL: Margin < 1 dB (TTL Rasio > 95%)
 ```
 
 ---
@@ -183,7 +181,7 @@ Status:
 ## 🔍 Field Validation Workflow
 
 ### **Step 1: Calculate**
-- Masukkan parameter → Get calculated margin
+- Input parameter → Get calculated margin + TTL Rasio
 
 ### **Step 2: Field Measurement**
 - Buka OPM
@@ -202,14 +200,6 @@ Status:
 - Lihat accuracy percentage
 - Baca interpretation & recommendations
 - Export validation report
-
-### **Step 5: Action**
-- Kalau accuracy bagus (±10%) → proceed
-- Kalau accuracy jelek (>20% diff) → troubleshoot:
-  * Check connector cleanliness
-  * Check fiber bending
-  * Check splice quality
-  * Repeat measurement
 
 ---
 
@@ -259,7 +249,7 @@ MIT
 
 ---
 
-**BimaWaluya LinkBug** - Alat Teknisi Lapangan untuk FTTH
+**BimaWaluya Link Budget FTTH** - Alat Teknisi Lapangan untuk FTTH
 
 Feedback & Issues: GitHub Issues
 
