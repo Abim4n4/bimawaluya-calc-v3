@@ -123,32 +123,32 @@ export const ResultDisplay: React.FC<ResultDisplayProps> = ({ result, input }) =
             </thead>
             <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
               {result.segmentCalculations.map((seg, idx) => (
-                <React.Fragment key={idx}>
-                  <tr className="bg-gray-50 dark:bg-gray-800">
+                <> 
+                  <tr className="bg-gray-50 dark:bg-gray-800" key={`${idx}-header`}>
                     <td colSpan={2} className="px-4 py-2 font-semibold text-gray-900 dark:text-white">
                       {seg.name} Segment
                     </td>
                   </tr>
-                  <tr>
+                  <tr key={`${idx}-fiber`}>
                     <td className="px-4 py-2 text-gray-600 dark:text-gray-400">├─ Fiber Loss</td>
                     <td className="px-4 py-2 text-right text-gray-900 dark:text-white">
                       {formatNumber(seg.fiberLoss)}
                     </td>
                   </tr>
-                  <tr>
+                  <tr key={`${idx}-splice`}>
                     <td className="px-4 py-2 text-gray-600 dark:text-gray-400">├─ Splice Loss</td>
                     <td className="px-4 py-2 text-right text-gray-900 dark:text-white">
                       {formatNumber(seg.spliceLoss)}
                     </td>
                   </tr>
-                  <tr>
+                  <tr key={`${idx}-connector`}>
                     <td className="px-4 py-2 text-gray-600 dark:text-gray-400">├─ Connector Loss</td>
                     <td className="px-4 py-2 text-right text-gray-900 dark:text-white">
                       {formatNumber(seg.connectorLoss)}
                     </td>
                   </tr>
                   {seg.splitterInfo && (
-                    <tr>
+                    <tr key={`${idx}-splitter`}>
                       <td className="px-4 py-2 text-gray-600 dark:text-gray-400">
                         ├─ Splitter ({seg.splitterInfo.ratio})
                       </td>
@@ -157,7 +157,7 @@ export const ResultDisplay: React.FC<ResultDisplayProps> = ({ result, input }) =
                       </td>
                     </tr>
                   )}
-                  <tr className="bg-blue-50 dark:bg-blue-950">
+                  <tr key={`${idx}-subtotal`} className="bg-blue-50 dark:bg-blue-950">
                     <td className="px-4 py-2 font-semibold text-gray-900 dark:text-white">
                       └─ Subtotal {seg.name}
                     </td>
@@ -165,7 +165,7 @@ export const ResultDisplay: React.FC<ResultDisplayProps> = ({ result, input }) =
                       {formatNumber(seg.segmentTotal)}
                     </td>
                   </tr>
-                </React.Fragment>
+                </>
               ))}
               <tr className="bg-gray-100 dark:bg-gray-800 font-bold">
                 <td className="px-4 py-2 text-gray-900 dark:text-white">TOTAL ATTENUATION</td>
@@ -243,5 +243,3 @@ const SummaryCard: React.FC<SummaryCardProps> = ({ label, value, unit }) => (
     </div>
   </div>
 );
-
-import React from 'react';
