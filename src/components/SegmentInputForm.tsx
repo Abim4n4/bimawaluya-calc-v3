@@ -307,7 +307,7 @@ const SegmentCard: React.FC<SegmentCardProps> = ({
                     className="w-4 h-4"
                   />
                   <span className="ml-2 text-sm text-gray-700 dark:text-gray-300">
-                    {ratio} ({SPLITTER_STANDARDS[ratio as any]?.loss} dB)
+                    {ratio} ({SPLITTER_STANDARDS[ratio as keyof typeof SPLITTER_STANDARDS]?.loss} dB)
                   </span>
                 </label>
               ))}

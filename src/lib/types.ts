@@ -33,7 +33,7 @@ export interface ONTData {
 }
 
 export interface LinkBudgetInput {
-  topology: TopologyId;
+  topology: TopologyId | null;
   olt: OLTData;
   segments: SegmentData[];
   ont: ONTData;
