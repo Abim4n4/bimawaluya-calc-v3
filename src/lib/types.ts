@@ -59,7 +59,7 @@ export interface SegmentCalculation {
 }
 
 export interface LinkBudgetResult {
-  topology: TopologyId;
+  topology: TopologyId | null;
   budgetAvailable: number; // dBm
   segmentCalculations: SegmentCalculation[];
   totalAttenuation: number; // dB
